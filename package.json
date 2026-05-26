@@ -1,32 +1,47 @@
 {
-  "name": "upload-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tsx watch src/infra/http/server.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.0.9",
-      "onFail": "download"
+    "name": "upload-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "tsx watch --env-file .env src/infra/http/server.ts",
+        "test": "dotenv -e .env.test -- vitest run",
+        "test:watch": "dotenv -e .env.test -- vitest",
+        "db:generate": "drizzle-kit generate",
+        "db:push": "drizzle-kit push",
+        "db:migrate": "drizzle-kit migrate",
+        "db:studio": "drizzle-kit studio"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "11.0.9",
+            "onFail": "download"
+        }
+    },
+    "type": "module",
+    "devDependencies": {
+        "@biomejs/biome": "^2.4.15",
+        "@types/node": "^25.9.1",
+        "dotenv-cli": "^11.0.0",
+        "drizzle-kit": "^0.31.10",
+        "drizzle-orm": "^0.45.2",
+        "tsx": "^4.22.3",
+        "typescript": "^6.0.3",
+        "vite-tsconfig-paths": "^6.1.1",
+        "vitest": "^4.1.7"
+    },
+    "dependencies": {
+        "@fastify/cors": "^11.2.0",
+        "@fastify/multipart": "^10.0.0",
+        "@fastify/swagger": "^9.7.0",
+        "@fastify/swagger-ui": "^5.2.6",
+        "fastify": "^5.8.5",
+        "fastify-type-provider-zod": "^6.1.0",
+        "postgres": "^3.4.9",
+        "zod": "^4.4.3"
     }
-  },
-  "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.15",
-    "@types/node": "^25.9.1",
-    "tsx": "^4.22.3",
-    "typescript": "^6.0.3"
-  },
-  "dependencies": {
-    "@fastify/cors": "^11.2.0",
-    "fastify": "^5.8.5",
-    "fastify-type-provider-zod": "^6.1.0",
-    "zod": "^4.4.3"
-  }
 }
