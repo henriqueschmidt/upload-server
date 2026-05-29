@@ -14,7 +14,7 @@ const uploadImageInput = z.object({
 
 type UploadImageInput = z.input<typeof uploadImageInput>
 
-const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp', 'jpg']
+const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg']
 
 export async function uploadImage(
     input: UploadImageInput
