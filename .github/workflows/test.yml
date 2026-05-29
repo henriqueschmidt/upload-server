@@ -15,7 +15,7 @@ jobs:
       postgres:
         image: postgres:13
         ports:
-          - 5432:5432
+          - 5454:5432
         env:
           POSTGRES_USER: docker
           POSTGRES_PASSWORD: docker
@@ -42,4 +42,5 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile
+      - run: pnpm dotenv -e .env.test -- drizzle-kit migrate
       - run: pnpm run test
